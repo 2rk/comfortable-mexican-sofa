@@ -1,5 +1,12 @@
 # encoding: utf-8
 nb:
+  attributes:
+    label: Navn
+    slug: Sti
+    parent_id: Underside til
+    content: Innhold
+    identifier: Identifikator
+    full_path: Fullstendig sti
   activerecord:
     models:
       comfy/cms/site: Nettside
@@ -224,6 +231,15 @@ nb:
             are_you_sure: Er du sikker?
           file:
             edit: Endre
+            delete: Fjerne
+            are_you_sure: Er du sikker?
+
+        tags:
+          page_file:
+            are_you_sure: Er du sikker?
+          page_file_library:
+            select: Select
+            change: Change
             delete: Fjerne
             are_you_sure: Er du sikker?
 

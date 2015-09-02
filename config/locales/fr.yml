@@ -1,5 +1,12 @@
 # encoding: utf-8
 fr:
+  attributes:
+    label: Nom
+    slug: Identifiant
+    parent_id: Parent
+    content: Contenu
+    identifier: Identifiant
+    full_path: Full path
   activerecord:
     models:
       comfy/cms/site: Site
@@ -208,6 +215,9 @@ fr:
           index:
             title: Fichiers
             new_link: Nouveau fichier
+            edit: Modifier
+            delete: Supprimer
+            are_you_sure: Êtes-vous sûr de vouloir supprimer ce fichier ?
             button: Ajouter des fichiers
           new:
             title: Nouveau fichier
@@ -224,6 +234,15 @@ fr:
             are_you_sure: Êtes-vous sûr de vouloir supprimer ce fichier ?
           file:
             edit: Modifier
+            delete: Supprimer
+            are_you_sure: Êtes-vous sûr de vouloir supprimer ce fichier ?
+
+        tags:
+          page_file:
+            are_you_sure: Êtes-vous sûr de vouloir supprimer ce fichier ?
+          page_file_library:
+            select: Select
+            change: Change
             delete: Supprimer
             are_you_sure: Êtes-vous sûr de vouloir supprimer ce fichier ?
 

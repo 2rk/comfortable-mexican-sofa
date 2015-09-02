@@ -1,5 +1,12 @@
 # encoding: utf-8
 zh-CN:
+  attributes:
+    label: 标签
+    slug: 嵌条
+    parent_id: 上级
+    content: 内容
+    identifier: 标识符
+    full_path: Full path
   activerecord:
     models:
       comfy/cms/site: 站点
@@ -208,6 +215,9 @@ zh-CN:
           index:
             title: 文件
             new_link: 上传新文件
+            edit: 编辑
+            delete: 删除
+            are_you_sure: 确定删除该文件吗？
             button: 上传文件
           new:
             title: 新文件
@@ -224,6 +234,15 @@ zh-CN:
             are_you_sure: 确定删除该文件吗？
           file:
             edit: 编辑
+            delete: 删除
+            are_you_sure: 确定删除该文件吗？
+
+        tags:
+          page_file:
+            are_you_sure: 确定删除该文件吗？
+          page_file_library:
+            select: Select
+            change: Change
             delete: 删除
             are_you_sure: 确定删除该文件吗？
 

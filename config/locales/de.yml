@@ -1,5 +1,12 @@
 # encoding: utf-8
 de:
+  attributes:
+    label: Bezeichnung
+    slug: Form
+    parent_id: Vorfahre
+    content: Inhalt
+    identifier: Identifikator
+    full_path: Full path
   activerecord:
     models:
       comfy/cms/site: Web
@@ -207,8 +214,11 @@ de:
 
           index:
             title: Datei
-            new_link: Neue Datei hochladen
-            button: Datei hochladen
+            new_link: Neue Datei aufspielen
+            edit: Datei bearbeiten
+            delete: Datei löschen
+            are_you_sure: Sind Sie sicher, dass Sie diese Datei löschen möchten?
+            button: Datei aufspielen
           new:
             title: Datei erstellen
           edit:
@@ -225,6 +235,15 @@ de:
           file:
             edit: Datei bearbeiten
             delete: Datei löschen
+            are_you_sure: Sind Sie sicher?
+
+        tags:
+          page_file:
+            are_you_sure: Sind Sie sicher?
+          page_file_library:
+            select: Auswählen
+            change: Ändern
+            delete: Löschen
             are_you_sure: Sind Sie sicher?
 
         categories:

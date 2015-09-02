@@ -1,5 +1,12 @@
 # encoding: utf-8
 ja:
+  attributes:
+    label: ラベル
+    slug: スラッグ
+    parent_id: 親
+    content: コンテンツ
+    identifier: Identifier
+    full_path: Full path
   activerecord:
     models:
       comfy/cms/site: サイト
@@ -208,6 +215,9 @@ ja:
           index:
             title: ファイル
             new_link: 新規ファイルをアップロード
+            edit: 編集
+            delete: 削除
+            are_you_sure: よろしいですか？
             button: ファイルをアップロード
           new:
             title: 新規ファイル
@@ -224,6 +234,15 @@ ja:
             are_you_sure: よろしいですか？
           file:
             edit: 編集
+            delete: 削除
+            are_you_sure: よろしいですか？
+
+        tags:
+          page_file:
+            are_you_sure: よろしいですか？
+          page_file_library:
+            select: Select
+            change: Change
             delete: 削除
             are_you_sure: よろしいですか？
 

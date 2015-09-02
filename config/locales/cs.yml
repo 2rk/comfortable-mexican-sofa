@@ -1,5 +1,12 @@
 # encoding: utf-8
 cs:
+  attributes:
+    label: Popis
+    slug: Slug
+    parent_id: Rodič
+    content: Obsah
+    identifier: Identifikátor
+    full_path: Full path
   activerecord:
     models:
       comfy/cms/site: Web
@@ -208,6 +215,9 @@ cs:
           index:
             title: Soubory
             new_link: Nahrát nový soubor
+            edit: Upravit
+            delete: Smazat
+            are_you_sure: Určitě?
             button: Nahrát soubory
           new:
             title: Nový soubor
@@ -224,6 +234,15 @@ cs:
             are_you_sure: Určitě?
           file:
             edit: Upravit
+            delete: Smazat
+            are_you_sure: Určitě?
+
+        tags:
+          page_file:
+            are_you_sure: Určitě?
+          page_file_library:
+            select: Select
+            change: Change
             delete: Smazat
             are_you_sure: Určitě?
 

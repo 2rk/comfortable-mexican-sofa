@@ -1,5 +1,12 @@
 # encoding: utf-8
 es:
+  attributes:
+    label: Nombre
+    slug: Identificador
+    parent_id: Padre
+    content: Contenido
+    identifier: Identifier
+    full_path: Full path
   activerecord:
     models:
       comfy/cms/site: Sitio
@@ -224,6 +231,15 @@ es:
             are_you_sure: ¿Estás seguro?
           file:
             edit: Editar
+            delete: Borrar
+            are_you_sure: ¿Estás seguro?
+
+        tags:
+          page_file:
+            are_you_sure: ¿Estás seguro?
+          page_file_library:
+            select: Select
+            change: Change
             delete: Borrar
             are_you_sure: ¿Estás seguro?
 

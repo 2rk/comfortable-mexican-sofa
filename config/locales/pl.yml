@@ -1,5 +1,12 @@
 # encoding: utf-8
 pl:
+  attributes:
+    label: Tytuł
+    slug: Ścieżka
+    parent_id: Rodzic
+    content: Zawartość
+    identifier: Identyfikator
+    full_path: Full path
   activerecord:
     models:
       comfy/cms/site: Witryna
@@ -208,6 +215,9 @@ pl:
           index:
             title: Pliki
             new_link: Wrzuć nowy plik
+            edit: Edytuj
+            delete: Usuń
+            are_you_sure: Jesteś pewien?
             button: Wrzuć plik
           new:
             title: Nowy plik
@@ -223,7 +233,14 @@ pl:
           page_form:
             are_you_sure: Jesteś pewien?
           file:
-            edit: Edytuj
+            are_you_sure: Jesteś pewien?
+
+        tags:
+          page_file:
+            are_you_sure: Jesteś pewien?
+          page_file_library:
+            select: Select
+            change: Change
             delete: Usuń
             are_you_sure: Jesteś pewien?
 

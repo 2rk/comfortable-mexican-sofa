@@ -14,7 +14,6 @@ window.CMS.init = ->
   CMS.sortable_list()
   CMS.timepicker()
   CMS.page_blocks()
-  CMS.page_file_popovers()
   CMS.mirrors()
   CMS.page_update_preview()
   CMS.page_update_publish()
@@ -73,6 +72,10 @@ window.CMS.slugify = ->
 
 
 window.CMS.wysiwyg = ->
+  # Get Rails CSRF tokens. If you use Redactor plugins that access Rails
+  # controllers you might need to attach CSRF to URLS. For example:
+  #   $('textarea.rich-text-editor, textarea[data-cms-rich-text]').redactor
+  #     fileUpload: "#{CMS.file_upload_path}?source=redactor&type=file&#{params}"
   csrf_token = $('meta[name=csrf-token]').attr('content')
   csrf_param = $('meta[name=csrf-param]').attr('content')
 
@@ -82,14 +85,9 @@ window.CMS.wysiwyg = ->
   $('textarea.rich-text-editor, textarea[data-cms-rich-text]').redactor
     minHeight:        160
     autoresize:       true
-    imageUpload:      "#{CMS.file_upload_path}?source=redactor&type=image&#{params}"
-    imageManagerJson: "#{CMS.file_upload_path}?source=redactor&type=image"
-    fileUpload:       "#{CMS.file_upload_path}?source=redactor&type=file&#{params}"
-    fileManagerJson:  "#{CMS.file_upload_path}?source=redactor&type=file"
-    definedLinks:     "#{CMS.pages_path}?source=redactor"
     buttonSource:     true
-    formatting:       ['p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6']
-    plugins:          ['imagemanager', 'filemanager', 'table', 'video', 'definedlinks']
+    formattingTags:   ['p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6']
+    plugins:          ['comfyImagemanager', 'comfyFilemanager', 'table', 'video', 'definedlinks']
     lang:             CMS.locale
     convertDivs:      false
 
@@ -140,14 +138,6 @@ window.CMS.page_blocks = ->
         CMS.wysiwyg()
         CMS.timepicker()
         CMS.codemirror()
-        CMS.page_file_popovers()
-
-
-window.CMS.page_file_popovers = ->
-  $('[data-toggle="page-file-popover"]').popover
-    trigger:    'hover'
-    placement:  'top'
-    html:       true
 
 
 window.CMS.mirrors = ->
