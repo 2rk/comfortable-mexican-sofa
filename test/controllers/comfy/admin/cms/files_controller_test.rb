@@ -120,6 +120,47 @@ class Comfy::Admin::Cms::FilesControllerTest < ActionController::TestCase
     end
   end
 
+  def test_create_as_redactor
+    assert_difference 'Comfy::Cms::File.count' do
+      post :create,
+        :source   => 'redactor',
+        :site_id  => @site,
+        :file     => fixture_file_upload('files/image.jpg', 'image/jpeg')
+      assert_response :success
+
+      file = Comfy::Cms::File.last
+      assert_equal ({
+        'filelink' => file.file.url,
+        'filename' => file.label
+      }), JSON.parse(response.body)
+    end
+  end
+
+  def test_create_as_redactor_failure
+    assert_no_difference 'Comfy::Cms::File.count' do
+      post :create, :source => 'redactor', :site_id => @site, :file => { }
+      assert_response :unprocessable_entity
+    end
+  end
+
+  def test_create_as_plupload_with_selected_category
+    category = comfy_cms_categories(:default)
+
+    assert_difference 'Comfy::Cms::File.count' do
+      post :create,
+        :source   => 'plupload',
+        :site_id  => @site,
+        :file     => {
+          :file => fixture_file_upload('files/image.jpg', 'image/jpeg')
+        },
+        :category => [category.label]
+      assert_response :success
+
+      file = Comfy::Cms::File.last
+      assert_equal [category], file.categories
+    end
+  end
+
   def test_update
     put :update, :site_id => @site, :id => @file, :file => {
       :label        => 'New File',
@@ -135,9 +176,8 @@ class Comfy::Admin::Cms::FilesControllerTest < ActionController::TestCase
   end
 
   def test_update_failure
-    file = comfy_cms_files(:default)
     put :update, :site_id => @site, :id => @file, :file => {
-      :file => nil
+      :file_file_name => ""
     }
     assert_response :success
     assert_template :edit
@@ -178,4 +218,5 @@ class Comfy::Admin::Cms::FilesControllerTest < ActionController::TestCase
     assert_equal 1, file_one.position
     assert_equal 0, file_two.position
   end
+
 end
