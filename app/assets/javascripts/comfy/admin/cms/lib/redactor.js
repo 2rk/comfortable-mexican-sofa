@@ -7729,6 +7729,10 @@
 					{
 						var node2 = this.selection.getMarker(2);
 						this.selection.setMarker(this.range, node2, false);
+						if (this.utils.browser('chrome')) // https://github.com/concrete5/concrete5/pull/5425/commits/3482125462871f6a1a39adcdc9bdde656bfae017#diff-6a66e72e377e89b69575cc3a8f6228e6
+						{
+						    this.caret.set(node1, 0, node2, 0);
+						}
 					}
 
 					this.savedSel = this.$editor.html();
