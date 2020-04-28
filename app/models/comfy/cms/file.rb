@@ -23,7 +23,7 @@ class Comfy::Cms::File < ActiveRecord::Base
 
   # -- Relationships --------------------------------------------------------
   belongs_to :site
-  belongs_to :block
+  belongs_to :block, optional: true
 
   # -- Validations ----------------------------------------------------------
   validates :site_id,
