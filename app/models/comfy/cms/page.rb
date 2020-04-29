@@ -14,7 +14,7 @@ class Comfy::Cms::Page < ActiveRecord::Base
   belongs_to :layout
   belongs_to :target_page,
     :class_name => 'Comfy::Cms::Page',
-    :optional => true
+    :optional   => true
 
   # -- Callbacks ------------------------------------------------------------
   before_validation :assigns_label,
@@ -117,11 +117,7 @@ protected
 
   # Forcing re-saves for child pages so they can update full_paths
   def sync_child_full_paths!
-    if ActiveRecord::VERSION::MAJOR <= 5 && ActiveRecord::VERSION::MINOR < 1
-      return unless full_path_changed?
-    else
-      return unless saved_change_to_full_path?
-    end
+    return unless saved_change_to_full_path?
     children.each do |p|
       p.update_attribute(:full_path, p.send(:assign_full_path))
     end

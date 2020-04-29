@@ -37,10 +37,16 @@ class Comfy::Cms::Site < ActiveRecord::Base
   def self.find_site(host, path = nil)
     return Comfy::Cms::Site.first if Comfy::Cms::Site.count == 1
     cms_site = nil
+
+    public_cms_path = ComfortableMexicanSofa.configuration.public_cms_path
+    if path && public_cms_path != "/"
+      path = path.sub(%r{\A#{public_cms_path}}, "")
+    end
+
     Comfy::Cms::Site.where(:hostname => real_host_from_aliases(host)).each do |site|
       if site.path.blank?
         cms_site = site
-      elsif "#{path.to_s.split('?')[0]}/".match /^\/#{Regexp.escape(site.path.to_s)}\//
+      elsif "#{path.to_s.split('?')[0]}/" =~ %r{^/#{Regexp.escape(site.path.to_s)}/}
         cms_site = site
         break
       end
@@ -93,11 +99,7 @@ protected
   # When site is marked as a mirror we need to sync its structure
   # with other mirrors.
   def sync_mirrors
-    if ActiveRecord::VERSION::MAJOR <= 5 && ActiveRecord::VERSION::MINOR < 1 
-      return unless is_mirrored_changed? && is_mirrored?
-    else
-      return unless saved_change_to_is_mirrored? && is_mirrored?
-    end
+    return unless saved_change_to_is_mirrored? && is_mirrored?
 
     [self, Comfy::Cms::Site.mirrored.where("id != #{id}").first].compact.each do |site|
       site.layouts.reload
